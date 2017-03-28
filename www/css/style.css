@@ -211,3 +211,11 @@ p {
 .platform-android .popover{
 margin-top:10px;
 }
+
+.item p {
+    font-size: 12px;
+}
+
+.title p {
+    color: white;
+}

@@ -1,33 +1,4 @@
-﻿app.controller('MotionCtrl', function ($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion) {
-    var fab = document.getElementById('fab');
-
-    $scope.moveFab = function(dir) {
-        fab.style.display = 'none';
-        fab.className = fab.className.replace('button-fab-top-left', '');
-        fab.className = fab.className.replace('button-fab-top-right', '');
-        fab.className = fab.className.replace('button-fab-bottom-left', '');
-        fab.className = fab.className.replace('button-fab-bottom-right', '');
-        fab.className += ' button-fab-' + dir;
-        $timeout(function() {
-            fab.style.display = 'block';
-        }, 100);
-    };
-
-    $scope.motionFab = function(type) {
-        var shouldAnimate = false;
-        var classes = type instanceof Array ? type : [type];
-        for (var i = 0; i < classes.length; i++) {
-            fab.classList.toggle(classes[i]);
-            shouldAnimate = fab.classList.contains(classes[i]);
-            if (shouldAnimate) {
-                (function(theClass) {
-                    $timeout(function() {
-                        fab.classList.toggle(theClass);
-                    }, 300);
-                })(classes[i]);
-            }
-        }
-    };
+﻿app.controller('SeriesCtrl', function ($scope, $stateParams, ionicMaterialMotion) {
 
     var reset = function() {
         var inClass = document.querySelectorAll('.in');
@@ -77,11 +48,10 @@
         reset();
         document.getElementsByTagName('ion-list')[0].className += ' animate-blinds';
         setTimeout(function() {
-            ionicMaterialMotion.blinds();
+            ionicMaterialMotion.blinds(); // ionic.material.motion.blinds(); //ionicMaterialMotion
         }, 500);
     };
 
     $scope.blinds();
-    //ionic.material.ink.displayEffect(); ionicMaterialMotion
-    ionicMaterialInk.displayEffect();
+
 });

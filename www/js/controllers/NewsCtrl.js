@@ -1,4 +1,4 @@
-﻿app.controller('ComponentsCtrl', function ($scope, $stateParams, ionicMaterialInk) {
+﻿app.controller('NewsCtrl', function ($scope, $stateParams, ionicMaterialInk) {
     //ionic.material.ink.displayEffect();
     ionicMaterialInk.displayEffect();
 

@@ -19,6 +19,55 @@ app.run(function ($ionicPlatform) {
     });
 })
 
+.factory('Chats', function() {
+  // Might use a resource here that returns a JSON array
+
+  // Some fake testing data
+  var chats = [{
+    id: 0,
+    name: 'Dougras',
+    lastText: 'Eu sou Dougras',
+    face: 'img/ben.png'
+  }, {
+    id: 1,
+    name: 'Dougras OFICIAL',
+    lastText: 'Você nao é o Dougras',
+    face: 'img/max.png'
+  }, {
+    id: 2,
+    name: 'Adam Bradleyson',
+    lastText: 'I should buy a boat',
+    face: 'img/adam.jpg'
+  }, {
+    id: 3,
+    name: 'Perry Governor',
+    lastText: 'Look at my mukluks!',
+    face: 'img/perry.png'
+  }, {
+    id: 4,
+    name: 'Mike Harrington',
+    lastText: 'This is wicked good ice cream.',
+    face: 'img/mike.png'
+  }];
+
+  return {
+    all: function() {
+      return chats;
+    },
+    remove: function(chat) {
+      chats.splice(chats.indexOf(chat), 1);
+    },
+    get: function(chatId) {
+      for (var i = 0; i < chats.length; i++) {
+        if (chats[i].id === parseInt(chatId)) {
+          return chats[i];
+        }
+      }
+      return null;
+    }
+  };
+});
+
 app.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
 
@@ -29,57 +78,57 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         controller: 'AppCtrl'
     })
 
-    .state('app.lists', {
-        url: '/lists',
+    .state('app.series', {
+        url: '/series',
         views: {
             'menuContent': {
-                templateUrl: 'templates/lists.html',
-                controller: 'ListsCtrl'
+                templateUrl: 'templates/series.html',
+                controller: 'SeriesCtrl'
             }
         }
     })
 
-    .state('app.ink', {
-        url: '/ink',
+    .state('app.scraps', {
+        url: '/scraps',
         views: {
             'menuContent': {
-                templateUrl: 'templates/ink.html',
-                controller: 'InkCtrl'
+                templateUrl: 'templates/scraps.html',
+                controller: 'ScrapsCtrl'
             }
         }
     })
 
-    .state('app.motion', {
-        url: '/motion',
+    .state('app.movies', {
+        url: '/movies',
         views: {
             'menuContent': {
-                templateUrl: 'templates/motion.html',
-                controller: 'MotionCtrl'
+                templateUrl: 'templates/movies.html',
+                controller: 'MoviesCtrl'
             }
         }
     })
 
-    .state('app.components', {
-        url: '/components',
+    .state('app.news', {
+        url: '/news',
         views: {
             'menuContent': {
-                templateUrl: 'templates/components.html',
-                controller: 'ComponentsCtrl'
+                templateUrl: 'templates/news.html',
+                controller: 'NewsCtrl'
             }
         }
     })
 
-    .state('app.extensions', {
-        url: '/extensions',
+    .state('app.apps', {
+        url: '/apps',
         views: {
             'menuContent': {
-                templateUrl: 'templates/extensions.html',
-                controller: 'ExtensionsCtrl'
+                templateUrl: 'templates/apps.html',
+                controller: 'AppsCtrl'
             }
         }
     })
     ;
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/components');
+    $urlRouterProvider.otherwise('/app/news');
 });

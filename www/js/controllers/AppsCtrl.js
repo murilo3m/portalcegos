@@ -1,4 +1,4 @@
-﻿app.controller('ExtensionsCtrl', function ($scope, $stateParams, $ionicActionSheet, $timeout, $ionicLoading, $ionicModal, $ionicPopup, ionicMaterialInk) {
+﻿app.controller('AppsCtrl', function ($scope, $stateParams, $ionicActionSheet, $timeout, $ionicLoading, $ionicModal, $ionicPopup, ionicMaterialInk) {
 
     // Triggered on a button click, or some other target
     $scope.actionSheet = function() {
